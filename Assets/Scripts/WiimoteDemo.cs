@@ -20,6 +20,8 @@ public class WiimoteDemo : MonoBehaviour {
 
     private Vector3 wmpOffset = Vector3.zero;
 
+    [SerializeField] private GameObject ModelController;
+
     void Start() {
         initial_rotation = model.rot.localRotation;
     }
@@ -41,6 +43,8 @@ public class WiimoteDemo : MonoBehaviour {
                 wmpOffset += offset;
 
                 model.rot.Rotate(offset, Space.Self);
+
+                ModelController.transform.rotation = model.rot.localRotation;
             }
         } while (ret > 0);
 
@@ -89,6 +93,8 @@ public class WiimoteDemo : MonoBehaviour {
         float[] pointer = wiimote.Ir.GetPointingPosition();
         ir_pointer.anchorMin = new Vector2(pointer[0], pointer[1]);
         ir_pointer.anchorMax = new Vector2(pointer[0], pointer[1]);
+
+
 	}
 
     void OnGUI()
