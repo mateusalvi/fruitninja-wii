@@ -1,0 +1,69 @@
+﻿                           // Wiimote script for navigating a pptPlex presentation
+// To get the laser cursor in presentation mode create a new string registry key in
+// HKCU\Software\Microsoft\OfficeLabs\PlexPorPPT\
+// call the new entry 'Wii' and set it to 'True'
+
+// Led 1&4 should be on when everything is working
+Wiimote.Led1 = true
+Wiimote.Led4 = true
+
+// Ignore cursor movement caused by clicking a button
+var.ButtonFreezeTime = 250ms
+var.PointerBump = KeepDown(Pressed(wiimote.A),var.ButtonFreezeTime) or KeepDown(Pressed(wiimote.B),var.ButtonFreezeTime)
+
+// Mouse movement
+if wiimote.PointerVisible but not var.PointerBump then
+  mouse.x = wiimote.PointerX
+  mouse.y = wiimote.PointerY
+end if
+
+// Mouse Buttons
+mouse.LeftButton   = Wiimote.A and KeepDown(Wiimote.PointerVisible,0.5s)
+mouse.RightButton  = Wiimote.B and KeepDown(Wiimote.PointerVisible,0.5s)
+
+// Handle zooming using +/-
+if wiimote.Plus then
+  mouse.WheelUp = true
+  end if
+if wiimote.Minus then
+  mouse.WheelDown = true
+end if
+
+// Map controller buttons to keyboard input
+keyboard.PageDown  = Wiimote.Right
+keyboard.PageUp    = Wiimote.Left
+keyboard.Home      = Wiimote.Home
+
+// Acceleration thresholds for moving next / previous
+var.xHit = 2.0
+var.yHit = 2.0
+
+var.xRot = Wiimote1.gx
+var.yRot = Wiimote1.gy
+
+var.hit = (var.xRot < -var.xHit) || (var.yRot < -var.yHit);
+
+// Hit and press 1 - move to previous viewport
+if (var.hit and wiimote.One) then
+   keyboard.PageUp = true
+   wait 30ms
+   keyboard.PageUp = false
+   wait 30ms
+// Hit and press 2 - move to next section
+else if (var.hit and wiimote.Two) then
+   keyboard.Ctrl= true
+   keyboard.PageDown = true
+   wait 30ms
+   keyboard.Ctrl= false
+   keyboard.PageDown = false
+   wait 30ms
+// Hit - move to next viewport
+else if (var.hit) then
+   keyboard.PageDown = true
+   wait 30ms
+   keyboard.PageDown = false
+   wait 30ms
+end if
+
+
+
