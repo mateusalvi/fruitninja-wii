@@ -15,7 +15,7 @@ Link do git-hub do GlovePIE: https://github.com/Ravbug/GlovePIE.git
 ###Com o controle de WII:###
 Baixar o GlovePIE;
 Rodar GlovePIE/GlovePIE-0.43/GlovePIE.exe;
-Abrir arquivo MousePlex.PIE do nosso repositório dentro do software GlovePIE;
+Abrir arquivo PlexMouse.PIE do nosso repositório dentro do software GlovePIE;
 Ter um controle de WII e dois emissores de infrevermelho (podem ser velas também);
 Seguir demais passos...
 
