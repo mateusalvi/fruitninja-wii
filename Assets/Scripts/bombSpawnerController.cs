@@ -6,9 +6,10 @@ public class bombSpawnerController : MonoBehaviour
 {
     [SerializeField] GameObject bombPrefab;
     [SerializeField] float spawnRate;
-    [SerializeField] float spawnDistance;
+    [SerializeField] public float spawnDistance;
+    [SerializeField] float firstSpawnDelay;
+    private GameObject bomb; 
     private Camera cam;
-    
     float nextSpawn;
     Vector3 nextSpawnPosition = new Vector3();
     
@@ -16,7 +17,7 @@ public class bombSpawnerController : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
-        nextSpawn = Time.time + spawnRate;
+        nextSpawn = Time.time + firstSpawnDelay;
     }
 
     // Update is called once per frame
@@ -31,7 +32,8 @@ public class bombSpawnerController : MonoBehaviour
 
             nextSpawn = Time.time + spawnRate;
             // Instantiate(fruitPrefab, transform.position, Quaternion.identity);
-            Instantiate(bombPrefab, nextSpawnPosition, Quaternion.identity);
+            bomb = Instantiate(bombPrefab, nextSpawnPosition, Quaternion.identity);
+            bomb.GetComponent<bombController>().LaunchBomb();
         }
     }
 

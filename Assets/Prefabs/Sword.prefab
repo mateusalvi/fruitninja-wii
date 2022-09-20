@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 425942}
   - component: {fileID: 637377504}
-  - component: {fileID: 8395098284984583344}
   - component: {fileID: 637377507}
-  m_Layer: 0
+  - component: {fileID: 1398135979}
+  m_Layer: 3
   m_Name: Sword
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -50,19 +50,6 @@ MonoBehaviour:
   distanceFromCamera: 3
   bladeTrailPrefab: {fileID: 1945049117440188, guid: abda6a8f2d06781459ba0765effbfea3, type: 3}
   minCuttingVelocity: 0.1
---- !u!135 &8395098284984583344
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 149494}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.75
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &637377507
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -79,6 +66,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!136 &1398135979
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149494}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 90
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6422794510305927573
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 806229356863322845}
   - component: {fileID: 6225307962988282906}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

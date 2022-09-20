@@ -45,5 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruitPrefab: {fileID: 6506709100955957148, guid: 4a2fc8c698a90274494a5915c227b301, type: 3}
-  spawnRate: 2
+  spawnDelay: 2
   spawnDistance: 3
+  firstSpawnDelay: 2

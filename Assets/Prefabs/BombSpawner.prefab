@@ -47,3 +47,4 @@ MonoBehaviour:
   bombPrefab: {fileID: 5209496096149940916, guid: d5f5660c2e0de9a4d9ed90d601f1ef4d, type: 3}
   spawnRate: 10
   spawnDistance: 3
+  firstSpawnDelay: 20

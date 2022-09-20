@@ -12,13 +12,13 @@ public class swordController : MonoBehaviour
     GameObject currentBladeTrail;
     Vector3 previousPosition;
     public float minCuttingVelocity = .001f;
-    SphereCollider sphereCollider;
+    private protected CapsuleCollider collider;
 	private float velocity;
 
     void Start()
     {
         currentBladeTrail = null;
-        sphereCollider = GetComponent<SphereCollider>();
+        collider = GetComponent<CapsuleCollider>();
         cam = Camera.main;
         mousePos = Input.mousePosition;
         previousPosition = mousePos;
@@ -36,10 +36,8 @@ public class swordController : MonoBehaviour
     void UpdateCut ()
 	{
         mousePos = Input.mousePosition;
-
         Vector3 newPos = cam.ScreenToWorldPoint(new Vector3 (mousePos.x, mousePos.y, distanceFromCamera));
         transform.position = newPos;
-
         velocity = (mousePos - previousPosition).magnitude * Time.deltaTime;
 
 		if (velocity > minCuttingVelocity)
@@ -55,7 +53,8 @@ public class swordController : MonoBehaviour
 
     void StartCutting ()
 	{
-        sphereCollider.enabled = true;
+        collider.enabled = true;
+
         if (currentBladeTrail == null)
         {
             currentBladeTrail = Instantiate(bladeTrailPrefab, transform);
@@ -68,7 +67,8 @@ public class swordController : MonoBehaviour
 
 	void StopCutting ()
 	{
-		sphereCollider.enabled = false;
+		collider.enabled = false;
+
 		if(currentBladeTrail != null)
         {
             currentBladeTrail.transform.SetParent(null);

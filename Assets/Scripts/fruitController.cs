@@ -4,38 +4,81 @@ using UnityEngine;
 
 public class fruitController : MonoBehaviour
 {
-    Rigidbody rb;
-    [SerializeField] int numberOfChilds = 9;
-    int randomFruit;
-    [SerializeField] float launchForce;
+    [SerializeField] GameObject fruitSpawner;
+    [SerializeField] int numberOfFruitModels = 9;
     [SerializeField] float initialTorque;
+    [SerializeField] GameObject cutFruitPrefab;
+    [SerializeField] int fruitScore;
+    [SerializeField] float launchForce;
+    private Rigidbody rb;
+    private GameObject cutFruit;
+    private Transform leftPiece;
+    private Transform rightPiece;
     private Camera cam;
-    // Start is called before the first frame update
+    private GameObject UI;
+    public AudioClip spawnSound;
+    int randomFruitModel;
+
     void Start()
     {
         cam = Camera.main;
-        randomFruit = Random.Range(0,numberOfChilds);
-        transform.GetChild(randomFruit).gameObject.SetActive(true);
+        randomFruitModel = Random.Range(0,numberOfFruitModels);
+        transform.GetChild(randomFruitModel).gameObject.SetActive(true);
         rb = GetComponent<Rigidbody>();
-        LaunchFruit();
-        rb.AddTorque(new Vector3(initialTorque,initialTorque,initialTorque));
-        Destroy(gameObject, 5);
+        Destroy(gameObject, 3);
+        UI = GameObject.Find("UI");
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        checkIfOutOfScreen();
     }
 
-    private void OnCollisionEnter(Collision other) 
+    private void OnTriggerEnter(Collider other) 
     {
-        // TODO: IF OTHER = ESPADA
+        if (other.gameObject.layer == 3)
+        {
+            CutFruit();
+        }
+    }
+
+    private void checkIfOutOfScreen()
+    {
+        if (transform.position.y < (1.2f * cam.ScreenToWorldPoint(new Vector3(Random.Range(0f, cam.pixelWidth), 0f, fruitSpawner.GetComponent<fruitSpawnerController>().spawnDistance)).y))
+        {
+            UI.GetComponent<uiController>().TakeDamage(1);
+            Destroy(gameObject);
+        }
+    }
+
+    private void CutFruit()
+    {
+        rb = gameObject.GetComponent<Rigidbody>();
+
+        cutFruit = Instantiate(cutFruitPrefab, transform.position, Quaternion.identity);
+        cutFruit.transform.rotation = gameObject.transform.rotation;
+
         Destroy(gameObject);
+
+        leftPiece = cutFruit.gameObject.transform.GetChild(0);
+        rightPiece = cutFruit.gameObject.transform.GetChild(1);
+
+        leftPiece.transform.GetChild(randomFruitModel).gameObject.SetActive(true);
+        rightPiece.transform.GetChild(randomFruitModel).gameObject.SetActive(true);
+
+        Vector3 normalBetweenSlices = (rightPiece.transform.position - leftPiece.transform.position);
+        normalBetweenSlices.Normalize();
+        leftPiece.GetComponent<Rigidbody>().AddForce(-normalBetweenSlices*50);
+        rightPiece.GetComponent<Rigidbody>().AddForce(normalBetweenSlices*50);
+
+        UI.GetComponent<uiController>().ChangeScore(fruitScore);
     }
 
-    private void LaunchFruit()
+    public void LaunchFruit()
     {
-        rb.AddForce(transform.up * launchForce);
+        GetComponent<AudioSource>().PlayOneShot(spawnSound, 1.0f);
+        rb = GetComponent<Rigidbody>();
+        rb.AddForce(Vector3.up * launchForce);
+        rb.AddTorque(new Vector3(Random.value * initialTorque, Random.value * initialTorque, Random.value * initialTorque));
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4904311051877830433}
   - component: {fileID: 4904311051874930435}
   - component: {fileID: 4904311051875929539}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: peanut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4904311051877830435}
   - component: {fileID: 4904311051874930437}
   - component: {fileID: 4904311051875929541}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: peach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 4904311051877830437}
   - component: {fileID: 4904311051874930439}
   - component: {fileID: 4904311051875929543}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: lemon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 4904311051877830441}
   - component: {fileID: 4904311051874930441}
   - component: {fileID: 4904311051875929545}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: cherries
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 4904311051877830443}
   - component: {fileID: 4904311051874930443}
   - component: {fileID: 4904311051875929547}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: banana
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 4904311051877830445}
   - component: {fileID: 4904311051874930445}
   - component: {fileID: 4904311051875929549}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: avocado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 4904311051877830447}
   - component: {fileID: 4904311051874930447}
   - component: {fileID: 4904311051875929551}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: apple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -523,14 +523,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4904311051877929743}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6266373279434093572}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &4904311051874930447
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -592,7 +592,7 @@ GameObject:
   - component: {fileID: 4904311051877830459}
   - component: {fileID: 4904311051874930461}
   - component: {fileID: 4904311051875929565}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: watermelon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -675,7 +675,7 @@ GameObject:
   - component: {fileID: 4904311051877830461}
   - component: {fileID: 4904311051874930463}
   - component: {fileID: 4904311051875929567}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: strawberry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -758,7 +758,7 @@ GameObject:
   - component: {fileID: 4904311051877830463}
   - component: {fileID: 4904311051874930433}
   - component: {fileID: 4904311051875929537}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -843,7 +843,7 @@ GameObject:
   - component: {fileID: 4598145187855773021}
   - component: {fileID: 4598145187855773023}
   - component: {fileID: 4338193062731426972}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fruit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -859,7 +859,7 @@ Transform:
   m_GameObject: {fileID: 6506709100955957148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4904311051877830447}
@@ -883,10 +883,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6506709100955957148}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.7
+  m_Radius: 0.75
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4598145187855773021
 MonoBehaviour:
@@ -900,9 +900,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910c020c5109de64f9fba35def2282e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfChilds: 9
+  fruitSpawner: {fileID: 111089005811179336, guid: e53882dcb1a06424994e711edc6e0060, type: 3}
+  numberOfFruitModels: 9
+  initialTorque: 300
+  cutFruitPrefab: {fileID: 6506709100955957148, guid: bca5d2986e01d7547995a8609e84146d, type: 3}
+  fruitScore: 1
   launchForce: 400
-  initialTorque: 20
+  spawnSound: {fileID: 8300000, guid: 2c64544af0a18444da9cd083c53b1621, type: 3}
 --- !u!54 &4598145187855773023
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -929,8 +933,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2c64544af0a18444da9cd083c53b1621, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
